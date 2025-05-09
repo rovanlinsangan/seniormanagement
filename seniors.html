@@ -1,0 +1,56 @@
+<!-- seniors.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registered Seniors</title>
+  <link rel="stylesheet" href="styles_seniors.css">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Registered Seniors</h1>
+    <input type="text" id="search" placeholder="Search by name...">
+    <div id="seniorList"></div>
+    <a href="index.html">Back to Registration</a>
+  </div>
+  <script>
+    const searchInput = document.getElementById('search');
+    const seniorList = document.getElementById('seniorList');
+
+    function displaySeniors(filter = '') {
+      const seniors = JSON.parse(localStorage.getItem('seniors') || '[]');
+      seniorList.innerHTML = '';
+
+      const filtered = seniors.filter(s => s.name.toLowerCase().includes(filter.toLowerCase()));
+
+      if (filtered.length === 0) {
+        seniorList.innerHTML = '<p>No seniors found.</p>';
+        return;
+      }
+
+      filtered.forEach(senior => {
+        const div = document.createElement('div');
+        div.classList.add('senior');
+        div.innerHTML = `
+          <p><span class="label">Name:</span> ${senior.name}</p>
+          <p><span class="label">Age:</span> ${senior.age}</p>
+          <p><span class="label">Gender:</span> ${senior.gender}</p>
+          <p><span class="label">Address:</span> ${senior.address}</p>
+          <p><span class="label">Condition:</span> ${senior.condition}</p>
+          ${senior.file ? `<p><a href="${senior.file}" target="_blank">View Document</a></p>` : ''}
+        `;
+        seniorList.appendChild(div);
+      });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      displaySeniors(e.target.value);
+    });
+
+    displaySeniors();
+  </script>
+</body>
+</html>

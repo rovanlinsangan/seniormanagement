@@ -1,0 +1,43 @@
+/* style_seniors.css - for seniors.html (Registered Seniors List) */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9f5ec;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2e7d32;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .senior {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .senior:last-child {
+    border-bottom: none;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
